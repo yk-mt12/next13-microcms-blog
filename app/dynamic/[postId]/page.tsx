@@ -2,10 +2,13 @@ import { notFound } from "next/navigation";
 import parse from "html-react-parser";
 import { getDetail, getList } from "@/libs/client";
 
+// キャッシュを利用しない
+export const revalidate = 60;
+
 export async function generateStaticParams() {
   const { contents } = await getList();
 
-  const paths = contents.map((post) => {
+  const paths = contents.map((post: any) => {
     return {
       postId: post.id,
     };
@@ -14,7 +17,7 @@ export async function generateStaticParams() {
   return [...paths];
 }
 
-export default async function BlogDetailPage({
+export default async function StaticDetailPage({
   params: { postId },
 }: {
   params: { postId: string };
@@ -29,12 +32,10 @@ export default async function BlogDetailPage({
   }
 
   return (
-    <section className="flex flex-col items-center justify-center min-h-screen py-2">
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <h1 className="text-6xl font-bold">{post.title}</h1>
-        <div className="text-2xl font-bold">{time}</div>
-        <div className="text-2xl font-bold">{parse(post.body)}</div>
-      </main>
-    </section>
+    <div>
+      <h1>{post.title}</h1>
+      <h2>{time}</h2>
+      <div>{parse(post.body)}</div>
+    </div>
   );
 }
