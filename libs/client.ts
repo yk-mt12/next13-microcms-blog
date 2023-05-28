@@ -55,3 +55,7 @@ export const getDetail = async (
 
   return detailData;
 };
+
+export type BlogResponse = {
+  contents: Blog[];
+};
