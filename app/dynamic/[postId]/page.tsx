@@ -33,7 +33,6 @@ export default async function StaticDetailPage({
 
   return (
     <div>
-      <h1>{post.title}</h1>
       <h2>{time}</h2>
       <div>{parse(post.body)}</div>
     </div>

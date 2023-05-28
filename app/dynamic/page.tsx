@@ -23,7 +23,7 @@ export default async function StaticPage() {
           return (
             <li key={content.id}>
               <Link href={`/dynamic/${content.id}`}>
-                <a>{content.title}</a>
+                {content.title}
               </Link>
             </li>
           );

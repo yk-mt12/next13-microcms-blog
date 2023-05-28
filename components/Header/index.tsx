@@ -1,3 +1,5 @@
+import Link  from "next/link"
+
 export const Header = () => {
   return (
     <header className="flex items-center justify-center w-full h-24 border-b">
@@ -10,10 +12,13 @@ export const Header = () => {
       <nav className="flex">
         <ul>
           <li>
-            <a href="/">Home</a>
+            <Link href="/">Home</Link>
           </li>
           <li>
-            <a href="/blog">Blog</a>
+            <Link href="/dynamic">Dynamic</Link>
+          </li>
+          <li>
+            <Link href="/blog">Static</Link>
           </li>
         </ul>
       </nav>
